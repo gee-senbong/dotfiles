@@ -13,6 +13,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'Raimondi/delimitMate'
 Plugin 'mattn/emmet-vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'google/yapf', { 'rtp': 'plugins/vim' }
 
 call vundle#end()
 filetype plugin indent on
@@ -26,7 +27,7 @@ set softtabstop=4         " When hitting <BS>, pretend like a tab is removed
 set shiftwidth=4          " Number of spaces to use for autoindent
 set smarttab              " A tab in an indent inserts 'shiftwidth' spaces
 set expandtab             " Expand tab to spaces in insert mode
-set colorcolumn=80        " Highlight 81th columns
+set colorcolumn=100       " Highlight 101th columns
 set hlsearch              " Highlight search matches
 set incsearch             " Shows search matches as you type
 set smartcase             " If caps, watch case
@@ -92,3 +93,7 @@ endfunction
 
 inoremap <TAB> <C-R>=InsertTabWrapper()<CR>
 inoremap <S-TAB> <C-N>
+
+" Plugins related key bindings
+map <C-Y> :call yapf#YAPF()<CR>
+imap <C-Y> <C-O>:call yapf#YAPF()<CR>
